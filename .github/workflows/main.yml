@@ -17,6 +17,7 @@ jobs:
         registry-url: "https://npm.pkg.github.com"
     - name: test
       run: |
+        npm config set //npm.pkg.github.com/:_authToken=${github-token}
         npm install @ge-ren/npm-sample-ga@1.0.0
         node index.js 
       env: 
