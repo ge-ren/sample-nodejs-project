@@ -5,7 +5,8 @@ on: push
 jobs:
   pullPackages:
     runs-on: ubuntu-latest
- #   env:
+    env:
+      github-token: ${{ secrets.TOKEN }}
  #     CI: true
     steps:
     - name: scm checkout
@@ -17,10 +18,8 @@ jobs:
         registry-url: "https://npm.pkg.github.com"
     - name: test
       run: |
-        echo ${github-token}
+        echo ${{ github-token}
         npm config list --json 
         npm install @ge-ren/npm-sample-ga@1.0.0
         node index.js 
-      env: 
-        github-token: ${{ secrets.TOKEN }}
          
